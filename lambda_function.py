@@ -7,6 +7,8 @@ print('Loading function')
 s3 = boto3.client('s3')
 dynamodb = boto3.resource('dynamodb')
 
+bucket_name = 'your_bucket_name'
+
 def lambda_handler(event, context):
     body = json.loads(event['body'])
     
@@ -98,7 +100,7 @@ def lambda_handler(event, context):
         
         ### send presigned url for upload file to bucket
         itemOwnershipsTable.put_item(Item=newItem)
-        return s3.generate_presigned_post(Bucket='chonlakorn12345', Key=s3_filename, ExpiresIn=10)
+        return s3.generate_presigned_post(Bucket=bucket_name, Key=s3_filename, ExpiresIn=10)
         
     ### check if there are file to get/share
     found = False
@@ -112,7 +114,7 @@ def lambda_handler(event, context):
         if found and 'sharer' not in body:
             res['url'] = s3.generate_presigned_url(
                 ClientMethod='get_object', 
-                Params={'Bucket': 'chonlakorn12345', 'Key': s3_filename},
+                Params={'Bucket': bucket_name, 'Key': s3_filename},
                 ExpiresIn=10)
         
         if 'sharer' in body:
@@ -134,7 +136,7 @@ def lambda_handler(event, context):
                     s3_filename = sharer + '/' + filename
                     res['url'] = s3.generate_presigned_url(
                         ClientMethod='get_object', 
-                        Params={'Bucket': 'chonlakorn12345', 'Key': s3_filename},
+                        Params={'Bucket': bucket_name, 'Key': s3_filename},
                         ExpiresIn=10)
         
         elif not found:

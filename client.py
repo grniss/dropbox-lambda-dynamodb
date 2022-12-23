@@ -1,7 +1,11 @@
 import requests
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 ######### for this activity I have set response to be error if there are 'message' in response so another case is action complete
-URL = 'https://kpyc78zcuf.execute-api.ap-southeast-1.amazonaws.com/default/dropboxFunction'
+URL = os.getenv('LAMBDA_FUNCTION_URL')
 
 print('Welcome to myDropbox Application')
 print('======================================================')
