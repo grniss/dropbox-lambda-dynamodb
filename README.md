@@ -24,4 +24,4 @@ For full information, please visit document.pdf in this repository
 
 For visualization, I draw ER diagram for DynamoDB table (the relation in diagram are virtually draw for understanding, but not really existing)
 
-<img width="499" alt="ER diagram" src="images/ER.png">
+<img width="884" alt="ER diagram" src="images/ER.png">
