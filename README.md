@@ -19,3 +19,9 @@ For full information, please visit document.pdf in this repository
 - copy .env.example as .env and put your lambda function url inplace LAMBDA_FUNCTION_URL
 - run pip3 install -r requirements.txt
 - run python3 client.py
+
+## DynamoDB table
+
+For visualization, I draw ER diagram for DynamoDB table (the relation in diagram are virtually draw for understanding, but not really existing)
+
+<img width="499" alt="ER diagram" src="images/ER.png">
